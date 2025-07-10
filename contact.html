@@ -77,36 +77,44 @@
                <div class="row">
                   <div class="col-md-12">
                      <form id="contactForm">
-                        <input type="text" class="mail_text" placeholder="Your Name" name="name" required>
-                        <input type="email" class="mail_text" placeholder="Your Email" name="email" required>
-                        <input type="text" class="mail_text" placeholder="Your Phone" name="phone" required>
-                        <textarea class="massage-bt" placeholder="Your Message" rows="5" name="message" required></textarea>
-                        <div class="send_bt"><button type="submit">Send Now</button></div>
+                        <input type="text" class="mail_text" placeholder="Your Name" name="name" required> 
+                        <input type="email" class="mail_text" placeholder="Your Email" name="email" required>   
+                        <input type="text" class="mail_text" placeholder="Your Phone" name="phone" required>  
+                        <textarea class="massage-bt" placeholder="Your Message" rows="5" name="message" required></textarea>  
+                        <div class="send_bt">     
+                           <button type="submit" style="cursor: pointer;">Send Now</button>  
+                        </div>
                      </form>
-                     <script>document.getElementById("contactForm").addEventListener("submit", function (e) {e.preventDefault();
-                     const data = {
-                        name: document.querySelector('input[name="name"]').value,
-                        email: document.querySelector('input[name="email"]').value,
-                        phone: document.querySelector('input[name="phone"]').value,
-                        message: document.querySelector('textarea[name="message"]').value
-                     };
-                     fetch("https://script.google.com/macros/s/AKfycbwruYQY6rfcLXyp2_KRgLN1y4FZAzXoJ_o5rX-ZZEdcoJUszqm3WbMNiXwWhWWr5W_4gg/exec", {
-                        method: "POST",
-                        body: JSON.stringify(data),
-                        headers: {
-                           "Content-Type": "application/json"
-                        }
-                     })
-                     .then(res => res.json())
-                     .then(response => {
-                        alert("Form submitted successfully!");
-                        document.getElementById("contactForm").reset();
-                     })
-                     .catch(error => {
-                        console.error("Error!", error.message);
-                     });
-                     });
-                     </script>
+                     <script>
+                     document.addEventListener("DOMContentLoaded", function () {
+                        document.getElementById("contactForm").addEventListener("submit", function (e) {
+                           e.preventDefault();
+                           const data = {
+                              name: document.querySelector('input[name="name"]').value,
+                              email: document.querySelector('input[name="email"]').value,
+                              phone: document.querySelector('input[name="phone"]').value,
+                              message: document.querySelector('textarea[name="message"]').value
+                           };
+                           console.log("Sending data:", data);
+                           fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
+                              method: "POST",
+                              body: JSON.stringify(data),
+                              headers: {
+                                 "Content-Type": "application/json"
+                              }
+                           })
+                           .then(res => res.json())
+                           .then(response => {
+                              alert("Form submitted successfully!");
+                              document.getElementById("contactForm").reset();
+                           })
+                           .catch(error => {
+                              console.error("Submission error:", error);
+                              alert("Something went wrong. Please try again.");
+                           });
+                        });
+                        });
+                        </script>
                   </div>
                </div>
             </div>
