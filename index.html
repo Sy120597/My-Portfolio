@@ -364,13 +364,45 @@
             <div class="contact_section_2">
                <div class="row">
                   <div class="col-md-12">
-                     <div class="mail_section_1">
-                        <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
-                        <input type="text" class="mail_text" placeholder="Your Email" name="Your Email">
-                        <input type="text" class="mail_text" placeholder="Your Phone" name="Your Phone">
-                        <textarea class="massage-bt" placeholder="Your Massage" rows="5" id="comment" name="Your Massage"></textarea>
-                        <div class="send_bt"><a href="mailto:sy120597@gmail.com">Send Now</a></div>
-                     </div>
+                     <form id="contactForm">
+                        <input type="text" class="mail_text" placeholder="Your Name" name="name" required> 
+                        <input type="email" class="mail_text" placeholder="Your Email" name="email" required>   
+                        <input type="text" class="mail_text" placeholder="Your Phone" name="phone" required>  
+                        <textarea class="massage-bt" placeholder="Your Message" rows="5" name="message" required></textarea>  
+                        <div class="send_bt">     
+                           <button type="submit" style="cursor: pointer;">Send Now</button>  
+                        </div>
+                     </form>
+                     <script>
+                     document.addEventListener("DOMContentLoaded", function () {
+                        document.getElementById("contactForm").addEventListener("submit", function (e) {
+                           e.preventDefault();
+                           const data = {
+                              name: document.querySelector('input[name="name"]').value,
+                              email: document.querySelector('input[name="email"]').value,
+                              phone: document.querySelector('input[name="phone"]').value,
+                              message: document.querySelector('textarea[name="message"]').value
+                           };
+                           console.log("Sending data:", data);
+                           fetch("https://script.google.com/macros/s/AKfycbwQDqMXsZbXlxJkZupQ4HGtB_QyfkELIVp0RBtQ01x4mEa2Q3RV0G4UedpyaQsJlqSa4g/exec", {
+                              method: "POST",
+                              body: JSON.stringify(data),
+                              headers: {
+                                 "Content-Type": "application/json"
+                              }
+                           })
+                           .then(res => res.json())
+                           .then(response => {
+                              alert("Form submitted successfully!");
+                              document.getElementById("contactForm").reset();
+                           })
+                           .catch(error => {
+                              console.error("Submission error:", error);
+                              alert("Something went wrong. Please try again.");
+                           });
+                        });
+                        });
+                        </script>
                   </div>
                </div>
             </div>
