@@ -34,3 +34,26 @@ My-Portfolio/
 ├── /stylesheets # Custom CSS files
 └── /scripts # JavaScript files
 
+
+## 👨‍💻 About Me
+
+I'm Shivam Yadav, a passionate Full Stack Developer focused on MERN stack and Java development. I'm constantly exploring new technologies and building meaningful digital solutions.
+
+## 📬 Contact
+
+Feel free to reach out!
+
+- 📧 Email: [sy120597@gmail.com](mailto:sy120597@gmail.com)  
+- 🔗 LinkedIn: [Shivam Yadav](https://www.linkedin.com/in/shivam-yadav-619b6413a)  
+- 🐙 GitHub: [Sy120597](https://github.com/Sy120597)
+
+## 🚀 How to Use
+
+To run locally:
+
+```bash
+git clone https://github.com/Sy120597/My-Portfolio.git
+cd My-Portfolio
+open index.html
+
+
