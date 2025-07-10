@@ -96,7 +96,7 @@
                               message: document.querySelector('textarea[name="message"]').value
                            };
                            console.log("Sending data:", data);
-                           fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
+                           fetch("https://script.google.com/macros/s/AKfycbwQDqMXsZbXlxJkZupQ4HGtB_QyfkELIVp0RBtQ01x4mEa2Q3RV0G4UedpyaQsJlqSa4g/exec", {
                               method: "POST",
                               body: JSON.stringify(data),
                               headers: {
